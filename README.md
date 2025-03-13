@@ -4,6 +4,7 @@
    - **Purpose**: Used for **text summarization**.
    - **How it’s used**: Takes a book title as input and returns a structured JSON with chapter summaries.
    - **Tech Stack**: Uses `GPT-4` via `https://api.openai.com/v1/chat/completions`.
+   - **ApiKey policy**: Since open ai do not allow to push api keys please contact dev to get one and update scheme when provided`.
 
 ## 2. **Google Text-to-Speech (TTS) API** 🗣️
    - **Purpose**: Converts **text summaries into speech**.
