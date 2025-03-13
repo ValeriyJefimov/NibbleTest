@@ -1,0 +1,65 @@
+# Xcode project files
+*.xcworkspace/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+DerivedData/
+.idea/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# CocoaPods dependencies
+Pods/
+Podfile.lock
+
+# Carthage dependencies
+Carthage/Build/
+
+# Fastlane configuration
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+
+# Temporary files
+*.lock
+*.swp
+*.swo
+*.DS_Store
+*.xcuserdatad*
+*.moved-aside
+*.pbxuser
+*.mode1v3
+*.mode2v3
+
+# Build and intermediate files
+build/
+*.app/
+*.dSYM/
+*.ipa
+*.xcarchive
+
+# Logs
+*.log
+*.crash
+nohup.out
+
+# Environment variables and secrets
+.env
+.env.local
+.env.production
+Config.xcconfig
+Secrets.plist
+
+# Swift Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Xcode Cloud
+*.xcscheme
+
+# Firebase/Google Services
+GoogleService-Info.plist

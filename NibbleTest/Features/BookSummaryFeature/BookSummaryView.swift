@@ -43,6 +43,7 @@ struct BookSummaryView: View {
                     SearchingView()
             }
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

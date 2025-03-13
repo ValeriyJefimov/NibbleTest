@@ -5,7 +5,7 @@
 import ComposableArchitecture
 import Foundation
 
-private let apiKeyGoogle = "AIzaSyCBs0hnpDfbwapDsZ7yubYCOFkQ-jpcYHo"
+let apiKeyGoogle = ProcessInfo.processInfo.environment["GOOGLE_API_KEY"]
 
 enum TextToSpeechClientError: Swift.Error {
     case invalidURL
@@ -17,7 +17,10 @@ enum TextToSpeechClientError: Swift.Error {
 
 extension TextToSpeechClient: DependencyKey {
     static let liveValue = Self { text in
-        guard let url = URL(string: "https://texttospeech.googleapis.com/v1/text:synthesize?key=\(apiKeyGoogle)") else {
+        guard
+            let apiKeyGoogle,
+            let url = URL(string: "https://texttospeech.googleapis.com/v1/text:synthesize?key=\(apiKeyGoogle)")
+        else {
             throw TextToSpeechClientError.invalidURL
         }
 

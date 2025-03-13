@@ -8,7 +8,7 @@
 import ComposableArchitecture
 import Foundation
 
-private let apiKeyOpenAi = "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"
+let apiKeyOpenAI = ProcessInfo.processInfo.environment["OPENAI_API_KEY"]
 private  let systemPrompt = """
         You are a book summarizer. When given a book title, return a JSON-formatted response containing a book summary. 
 
@@ -45,13 +45,13 @@ extension SummaryClient {
 extension SummaryClient: DependencyKey {
   static let liveValue =  Self(
     bookSummary: { bookName in
-        guard let url = URL(string: "https://api.openai.com/v1/chat/completions") else {
+        guard let apiKeyOpenAI, let url = URL(string: "https://api.openai.com/v1/chat/completions") else {
             throw Error.invalidURL
         }
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("Bearer \(apiKeyOpenAi)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(apiKeyOpenAI)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
 
