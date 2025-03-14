@@ -10,7 +10,7 @@ import Foundation
 
 let apiKeyOpenAI = ProcessInfo.processInfo.environment["OPENAI_API_KEY"]
 private  let systemPrompt = """
-        You are a book summarizer. When given a book title, return a JSON-formatted response containing a book summary. 
+        You are a book summarizer. When given a book title in any language, return a JSON-formatted response containing a book summary in English. 
 
         The response should include:
         - A cover image URL of the summarized book in PNG format and hd resolution. Use https://www.googleapis.com/books/v1/volumes api to get image url. Do not use wikimedia.
@@ -19,7 +19,6 @@ private  let systemPrompt = """
         Format example:
         {
             "cover": "https://actualbookcover.com/book_cover.png",
-            "book_url": "https://actualbookpage.com",
             "chapters": [
                 {
                     "title": "Chapter 1: Introduction",
@@ -43,7 +42,7 @@ extension SummaryClient {
 }
 
 extension SummaryClient: DependencyKey {
-  static let liveValue =  Self(
+  static let liveValue = Self(
     bookSummary: { bookName in
         guard let apiKeyOpenAI, let url = URL(string: "https://api.openai.com/v1/chat/completions") else {
             throw Error.invalidURL

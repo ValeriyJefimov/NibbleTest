@@ -138,8 +138,8 @@ struct PlayerFeature {
                     }
 
                 case .playableFinished:
+                    state.playingState = .pause
                     if state.currentChapterIndex == state.chapters.indices.last {
-                        state.playingState = .pause
                         return .merge(
                             .run { send in
                                 await audioPlayer.pause()
