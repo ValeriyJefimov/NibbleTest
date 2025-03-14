@@ -129,6 +129,10 @@ struct PlayerFeature {
 
                 case let .updatePlayableCurrentTime(newValue):
                     state.currentDuration = newValue
+
+                    if newValue == state.totalDuration {
+                        return .send(.playableFinished)
+                    }
                     return .none
 
                 case let .currentDurationChanged(newValue):
